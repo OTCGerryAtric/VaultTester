@@ -218,13 +218,13 @@ def main():
         # Use st.write to display the formatted hyperlink text
         col3.write(f'<a href="{selected_url_3}" target="_blank">{link_text_3}</a>', unsafe_allow_html=True)
 
-        # Create hyperlink for DIM Beta
+        # Create hyperlink for Light.gg
         selected_url_4 = "https://www.light.gg/"
         link_text_4 = 'Light.gg'
         # Use st.write to display the formatted hyperlink text
         col4.write(f'<a href="{selected_url_4}" target="_blank">{link_text_4}</a>', unsafe_allow_html=True)
 
-        # Create hyperlink for DIM Beta
+        # Create hyperlink for D2 Foundry
         selected_url_5 = "https://d2foundry.gg/"
         link_text_5 = 'D2Foundry'
         # Use st.write to display the formatted hyperlink text
@@ -466,7 +466,7 @@ def main():
                                            selected_slot, selected_element, selected_sunset)
 
             # Create hyperlinks
-            create_hyperlinks_v1(manifest_data_filtered_pg2, grid_table, col1, col2, col3, col4)
+            create_hyperlinks_v1(manifest_data_filtered_pg2, grid_table, col1, col2, col3, col4, col5)
 
     def weapon_comparison(session_state, manifest_weapon_data, selected_tier, selected_type, selected_archetype,
                           selected_slot, selected_element, selected_sunset):

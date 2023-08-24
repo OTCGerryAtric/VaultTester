@@ -164,7 +164,7 @@ def create_grid_table(file, selected_tier, selected_type, selected_archetype, se
     # Return the grid table object
     return grid_table
 
-def create_hyperlinks_v1(dataframe, grid_table, col1, col2, col3, col4):
+def create_hyperlinks_v1(dataframe, grid_table, col1, col2, col3, col4, col5):
     # Create hyperlink for light.gg
     try:
         hyperlink_df = dataframe[['Weapon Name', 'Weapon Hash']]
@@ -194,22 +194,37 @@ def create_hyperlinks_v1(dataframe, grid_table, col1, col2, col3, col4):
         col2.write(link_text_2, unsafe_allow_html=True)
     except Exception:
         col2.write('Select Weapon to see D2 Foundry link', unsafe_allow_html=True)
+        
+    # Create hyperlink for Destiny Tracker
+    try:
+        hyperlink_df = dataframe[['Weapon Name', 'Weapon Hash']]
+        sel_row_3 = grid_table.selected_rows
+        selected_hash_3 = sel_row_3[0]["Weapon Hash"]
+        hyperlink_df = hyperlink_df.loc[hyperlink_df['Weapon Hash'] == selected_hash_3]
+        selected_name_3 = hyperlink_df['Weapon Name'].iloc[0]
+        selected_url_3 = "https://destinytracker.com/destiny-2/db/items/{}".format(selected_hash_3)
+        hyperlink_text_3 = "Destiny Tracker - {}".format(selected_name_2)
+        link_text_3 = '[{}]({})'.format(hyperlink_text_3, selected_url_3.replace(' ', '%20'))
+        # Use st.write to display the formatted hyperlink text
+        col3.write(link_text_3, unsafe_allow_html=True)
+    except Exception:
+        col3.write('Select Weapon to see Destiny Tracker', unsafe_allow_html=True)
 
     # Create hyperlink for DIM
     try:
-        selected_url_3 = "https://app.destinyitemmanager.com/"
-        link_text_3 = 'Destiny Item Manager (DIM)'
+        selected_url_4 = "https://app.destinyitemmanager.com/"
+        link_text_4 = 'Destiny Item Manager (DIM)'
         # Use st.write to display the formatted hyperlink text
-        col3.write(f'<a href="{selected_url_3}" target="_blank">{link_text_3}</a>', unsafe_allow_html=True)
+        col4.write(f'<a href="{selected_url_4}" target="_blank">{link_text_4}</a>', unsafe_allow_html=True)
     except Exception:
         pass
 
     # Create hyperlink for DIM Beta
     try:
-        selected_url_4 = "https://beta.destinyitemmanager.com/"
-        link_text_4 = 'BETA - Destiny Item Manager (DIM)'
+        selected_url_5 = "https://beta.destinyitemmanager.com/"
+        link_text_5 = 'BETA - Destiny Item Manager (DIM)'
         # Use st.write to display the formatted hyperlink text
-        col4.write(f'<a href="{selected_url_4}" target="_blank">{link_text_4}</a>', unsafe_allow_html=True)
+        col5.write(f'<a href="{selected_url_5}" target="_blank">{link_text_5}</a>', unsafe_allow_html=True)
     except Exception:
         pass
 
@@ -244,20 +259,35 @@ def create_hyperlinks_v2(dataframe, grid_table, col5):
     except Exception:
         col5.write('Select Weapon to see D2 Foundry link', unsafe_allow_html=True)
 
+    # Create hyperlink for Destiny Tracker
+    try:
+        hyperlink_df = dataframe[['Weapon Name', 'Weapon Hash']]
+        sel_row_3 = grid_table.selected_rows
+        selected_hash_3 = sel_row_3[0]["Weapon Hash"]
+        hyperlink_df = hyperlink_df.loc[hyperlink_df['Weapon Hash'] == selected_hash_3]
+        selected_name_3 = hyperlink_df['Weapon Name'].iloc[0]
+        selected_url_3 = "https://destinytracker.com/destiny-2/db/items/{}".format(selected_hash_3)
+        hyperlink_text_3 = "Destiny Tracker - {}".format(selected_name_2)
+        link_text_3 = '[{}]({})'.format(hyperlink_text_3, selected_url_3.replace(' ', '%20'))
+        # Use st.write to display the formatted hyperlink text
+        col5.write(link_text_3, unsafe_allow_html=True)
+    except Exception:
+        col5.write('Select Weapon to see Destiny Tracker', unsafe_allow_html=True)
+
     # Create hyperlink for DIM
     try:
-        selected_url_3 = "https://app.destinyitemmanager.com/"
-        link_text_3 = 'Destiny Item Manager (DIM)'
+        selected_url_4 = "https://app.destinyitemmanager.com/"
+        link_text_4 = 'Destiny Item Manager (DIM)'
         # Use st.write to display the formatted hyperlink text
-        col5.write(f'<a href="{selected_url_3}" target="_blank">{link_text_3}</a>', unsafe_allow_html=True)
+        col5.write(f'<a href="{selected_url_4}" target="_blank">{link_text_4}</a>', unsafe_allow_html=True)
     except Exception:
         pass
 
     # Create hyperlink for DIM Beta
     try:
-        selected_url_4 = "https://beta.destinyitemmanager.com/"
-        link_text_4 = 'BETA - Destiny Item Manager (DIM)'
+        selected_url_5 = "https://beta.destinyitemmanager.com/"
+        link_text_5 = 'BETA - Destiny Item Manager (DIM)'
         # Use st.write to display the formatted hyperlink text
-        col5.write(f'<a href="{selected_url_4}" target="_blank">{link_text_4}</a>', unsafe_allow_html=True)
+        col5.write(f'<a href="{selected_url_5}" target="_blank">{link_text_5}</a>', unsafe_allow_html=True)
     except Exception:
         pass
