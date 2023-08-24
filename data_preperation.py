@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from st_aggrid import AgGrid, GridOptionsBuilder
 
 from csv_processing import manifest_weapon_data
@@ -42,8 +43,6 @@ def weapon_type_output_with_dim(manifest_weapon_data, file):
         element_count_2 = df_3[df_3['Weapon Element'] == element].set_index('Weapon Type')['Unique Count']
         df_merge[element] = df_merge['Weapon Type'].apply(lambda x: '{} (of {})'.format(element_count_1.get(x, 0), element_count_2.get(x, 0)))
     return df_merge
-
-import numpy as np
 
 def armor_type_count(file):
     sort_order = ['Helmet', 'Gauntlets', 'Chest', 'Legs', 'Class Item']
